@@ -1,32 +1,14 @@
-import random
-import inquirer
+import random, inquirer
 
-    
 class Paises():
     
-    def create(self, tema):
-        self.paises = tema
-    
+    def __init__(self) -> None:
+        self.paises = ['Brasil', 'Argentina', 'Chile', 'Peru', 'Colômbia']
+        
     def sorteia(self):
         sorteado = random.choice(self.paises)
         return sorteado
-    
-    def remover(self):
-        sorteado = lista.sorteia()
-        nova_lista = lista(sorteado)
-        return nova_lista
-
-
-def main():
-    lista = Paises()
-    lista.create(tema=['Brasil', 'Argentina', 'Chile', 'Peru', 'Colômbia'])
-    sorteia = lista.sorteia()
-    nova_lista = lista.()
-
-    print(lista_paises)
-    print(sorteia)
-    print(nova_lista)
-
+        
 def dicas(pais):
     sorteada = pais
     
@@ -49,8 +31,6 @@ def dicas(pais):
     else:
         colombia = ['É um país que começa com a letra C', 'Este país é responsável por 50%\nda produção mundial de esmeraldas', 'A capital do país é Bogotá\n', 'A língua mãe é o Espanhol', 'Atualmente, o presidente do país é Gustavo Petro']
         return colombia
-        
-        
 
 def documentacao():
     
@@ -86,6 +66,13 @@ def menu_dificuldade():
     answers = inquirer.prompt(questions)
     return answers['option']
 
+def remover():
+    p = Paises(paises=['Brasil', 'Argentina', 'Chile', 'Peru', 'Colômbia'])
+    sorteado = p.sorteia()
+    nova_lista = p.paises.remove(sorteado)
+    print(p.paises)
+    return nova_lista
+
 def mensagem():
     print('='*41)
     print("SEJA BEM VINDO AO JOGO DA ADIVINHAÇÃO!\n")
@@ -93,62 +80,64 @@ def mensagem():
     print('='*41)
     
 def logica_jogo():
-    
-    lista = ''
-    sorteado = sorteia_pais(paises=lista)
-    dica = dicas(pais=sorteado)
+       
+    count = 0
     chances = 5
     pontos = 5
-    acabou = False
-    print('dica:',dica[0])
-    
-    while lista != '':
-        if acabou == False:
-            
-            print(sorteado)
+    lista_ponto = []
+    objeto = Paises()
+    sorteado = objeto.sorteia()
+    dica = dicas(pais=sorteado)
+    lista = objeto.paises
 
-            tentativa = str(input("Digite sua tentativa: ")).strip()
+    while True:
+        print('dica:',dica[0])
+        print(lista)
+        print(sorteado)
+
+        tentativa = str(input("Digite sua tentativa: ")).strip().title()
+        
+        if tentativa != sorteado:
+            chances -= 1
             
-            if tentativa != sorteado:
-                chances -= 1
+            if chances == 4:
+                print(f'Ops, você errou... \nchances: {chances}')
+                print('dica:',dica[1])
+                pontos -= 1
                 
-                if chances == 4:
-                    print(f'Ops, você errou... \nchances: {chances}')
-                    print('dica:',dica[1])
-                    pontos -= 1
-                    
-                elif chances == 3:
-                    print(f'Ops, você errou...\nchances: {chances}')
-                    print('dica:',dica[2])
-                    pontos -= 1
+            elif chances == 3:
+                print(f'Ops, você errou...\nchances: {chances}')
+                print('dica:',dica[2])
+                pontos -= 1
+            
+            elif chances == 2:
+                print(f'Ops, você errou...\nchances: {chances}')
+                print('dica:',dica[3])
+                pontos -= 1
                 
-                elif chances == 2:
-                    print(f'Ops, você errou...\nchances: {chances}')
-                    print('dica:',dica[3])
-                    pontos -= 1
-                    
-                elif chances == 1:
-                    print(f'Ops, você errou...\nchances: {chances}')
-                    print('dica:',dica[4])
-                    pontos -= 1
-                    
-                else:
-                    print("Ops.. Acabaram suas chances!\nVocê não ganhou nenhum ponto")
-                    acabou = True
-                    
-            else:
-                print(f"Parabéns, você acertou!\nPontos ganhos: {pontos}")
-                acabou = True
+            elif chances == 1:
+                print(f'Ops, você errou...\nchances: {chances}')
+                print('dica:',dica[4])
+                pontos -= 1
+                
+            elif chances == 0:
+                print("Ops.. Acabaram suas chances!\nVocê não ganhou nenhum ponto")
                 
         else:
+            print(f"Parabéns, você acertou!\nPontos ganhos: {pontos}")
+            count += 1
+            print("Contador: ", count)
+            lista_ponto.append(pontos)
             lista.remove(sorteado)
+            sorteado = objeto.sorteia()
             print(lista)
-            return pontos
+            print(lista_ponto)
 
 def jogo():
 
     while True:
         pontos = logica_jogo()
         print(pontos)
-
-main()
+        break
+        
+logica_jogo()

@@ -1,36 +1,42 @@
-import random
+import random, inquirer
 
+    
 class Paises():
     
-    def __init__(self) -> None:
+    def __init__(self):
         self.paises = ['Brasil', 'Argentina', 'Chile', 'Peru', 'Colômbia']
-        
+    
     def sorteia(self):
         sorteado = random.choice(self.paises)
         return sorteado
+    
+    def remover(self):
+        sorteado = self.sorteia()
+        nova_lista = self.paises.remove(sorteado)
+        return nova_lista
+    
+    def dicas(self, país):
+        sorteada = país
         
-def dicas(pais):
-    sorteada = pais
-    
-    if sorteada == 'Brasil':
-        brasil = ['É um país que começa com a letra B\n','Possui a maior floresta do mundo, conhecida\ncomo floresta amazônica\n', 'A capital é Brasília\n',  'A língua mãe é o portugês\n', 'Atualmente, o presidente do país é Lula']
-        return brasil
-    
-    elif sorteada == 'Argentina':
-        argentina = ['É um país que começa com a letra A\n','País do tango\n', 'A capital do país é Bueno Aires\n', 'A língua mãe é o Espanhol\n', 'Atualmente, o presidente do país é Alberto Fernández\n']
-        return argentina
-    
-    elif sorteada == 'Chile':
-        chile = ['É um país que começa com a letra C', 'O deserto mais seco do mundo, está localizado\nnesse país (Deserto do Atacama)\n', 'A capital do país é Santiado\n', 'A língua mãe é o Espanhol\n', 'Atualmente, o presidente do país é Gabriel Boric\n']
-        return chile
-    
-    elif sorteada == 'Peru':
-        peru = ['É um país que começa com a letra P', 'É a civilização mais antiga da América Latina\n', 'A capital do país é Lima\n', 'A língua mãe é o Espanhol\n', 'Atualmente, a presidenta do país é Dina Boluarte']
-        return peru
-    
-    else:
-        colombia = ['É um país que começa com a letra C', 'Este país é responsável por 50%\nda produção mundial de esmeraldas', 'A capital do país é Bogotá\n', 'A língua mãe é o Espanhol', 'Atualmente, o presidente do país é Gustavo Petro']
-        return colombia
+        if sorteada == 'Brasil':
+            brasil = ['É um país que começa com a letra B\n','Possui a maior floresta do mundo, conhecida\ncomo floresta amazônica\n', 'A capital é Brasília\n',  'A língua mãe é o portugês\n', 'Atualmente, o presidente do país é Lula']
+            return brasil
+        
+        elif sorteada == 'Argentina':
+            argentina = ['É um país que começa com a letra A\n','País do tango\n', 'A capital do país é Bueno Aires\n', 'A língua mãe é o Espanhol\n', 'Atualmente, o presidente do país é Alberto Fernández\n']
+            return argentina
+        
+        elif sorteada == 'Chile':
+            chile = ['É um país que começa com a letra C', 'O deserto mais seco do mundo, está localizado\nnesse país (Deserto do Atacama)\n', 'A capital do país é Santiado\n', 'A língua mãe é o Espanhol\n', 'Atualmente, o presidente do país é Gabriel Boric\n']
+            return chile
+        
+        elif sorteada == 'Peru':
+            peru = ['É um país que começa com a letra P', 'É a civilização mais antiga da América Latina\n', 'A capital do país é Lima\n', 'A língua mãe é o Espanhol\n', 'Atualmente, a presidenta do país é Dina Boluarte']
+            return peru
+        
+        else:
+            colombia = ['É um país que começa com a letra C', 'Este país é responsável por 50%\nda produção mundial de esmeraldas', 'A capital do país é Bogotá\n', 'A língua mãe é o Espanhol', 'Atualmente, o presidente do país é Gustavo Petro']
+            return colombia
 
 def documentacao():
     
@@ -66,13 +72,6 @@ def menu_dificuldade():
     answers = inquirer.prompt(questions)
     return answers['option']
 
-def remover():
-    p = Paises(paises=['Brasil', 'Argentina', 'Chile', 'Peru', 'Colômbia'])
-    sorteado = p.sorteia()
-    nova_lista = p.paises.remove(sorteado)
-    print(p.paises)
-    return nova_lista
-
 def mensagem():
     print('='*41)
     print("SEJA BEM VINDO AO JOGO DA ADIVINHAÇÃO!\n")
@@ -80,24 +79,20 @@ def mensagem():
     print('='*41)
     
 def logica_jogo():
-       
+    
     count = 0
     chances = 5
     pontos = 5
-    lista_ponto = []
     objeto = Paises()
-    sorteado = objeto.sorteia()
-    dica = dicas(pais=sorteado)
     lista = objeto.paises
-
+    lista_ponto = []
+    sorteado = objeto.sorteia()
+    dica = objeto.dicas(país=sorteado)
+ 
     while True:
-
-        print('dica:',dica[0])
-        print(lista)
-                
         print(sorteado)
-
-        tentativa = str(input("Digite sua tentativa: ")).strip()
+        print('dica:',dica[0])
+        tentativa = str(input("Digite sua tentativa: ")).strip().title()
         
         if tentativa != sorteado:
             chances -= 1
@@ -128,11 +123,14 @@ def logica_jogo():
         else:
             print(f"Parabéns, você acertou!\nPontos ganhos: {pontos}")
             count += 1
-            print("COntador: ", count)
+            print("Contador: ", count)
             lista_ponto.append(pontos)
             lista.remove(sorteado)
             sorteado = objeto.sorteia()
+            dica = objeto.dicas(país=sorteado)
+            pontos = 5
             print(lista)
+            print(lista_ponto)
 
 def jogo():
 
@@ -141,3 +139,4 @@ def jogo():
         print(pontos)
         
 logica_jogo()
+
