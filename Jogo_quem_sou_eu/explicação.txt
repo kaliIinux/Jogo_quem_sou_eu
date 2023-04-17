@@ -1,0 +1,34 @@
+DESAFIO 04
+
+Jogo "Quem sou eu", tentar adivinhar uma palavra de determinado tema,
+o jogador possui 5 dicas para tentar adivinhar cada palavra, cada erro
+ele perde 1 ponto.
+
+1. O computador sorteia uma palavra para que o jogo comece (O jogador não sabe qual é
+a palavra);
+
+2. Ao iniciar o jogo, o jogador se identifica (nome);
+
+3. Uma dica de palavra é exibida para o jogador;
+
+4. Caso o jogador não adivinhe ao final da 5ª dica, o jogo
+mostra pra ele qual era a palavra sorteada e ele não ganha ponto.
+
+Temas: 
+    - Países (Fácil: América Latina, Difícil: Resto do mundo)
+    - Animais
+    - Instrutores
+
+Utilizar:
+
+    - Método estático @staticmethod
+    - Métodos de Classe @classmethod
+    - Atributo estático
+    - Herança
+    - Polimorfismo
+
+Bônus:
+    - Criar um sistema de ranking utilizando planilha de excel (.xlsx ou .csv)
+    utilizando pandas.
+    - Dicas de colunas: Nome de jogador, Pontos
+
