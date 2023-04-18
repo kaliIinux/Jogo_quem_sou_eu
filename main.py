@@ -1,4 +1,4 @@
-from funções import sorteia_pais, menu, documentacao, menu_temas, menu_dificuldade, mensagem
+from funções import jogo, menu, documentacao, menu_temas, menu_dificuldade, mensagem
 
 def main():
     
@@ -13,7 +13,14 @@ def main():
                 
                 if dificuldade == 'FÁCIL':
                     mensagem()
-                    sorteado = sorteia_pais()
+                    jogo()
+                    menu_temas()
+                    
+                elif dificuldade == 'DIFÍCIL':
+                    mensagem()
+                    
+                else:
+                    menu_temas()
             
             elif temas == 'ANIMAIS':
                 pass
