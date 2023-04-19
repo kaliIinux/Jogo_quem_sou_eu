@@ -1,5 +1,6 @@
 import inquirer
 from Paises import Paises
+from Animais import Animais
 
 def documentacao():
     
@@ -68,6 +69,7 @@ def mensagem():
     print('='*41)
     print()
     
+    
 def logica_jogo():
 
     """
@@ -86,7 +88,7 @@ def logica_jogo():
     objeto = Paises()
     lista = objeto.paises
     sorteado = objeto.sorteia()
-    dica = objeto.dicas(país=sorteado)
+    dica = objeto.dica_países(país=sorteado)
     print(sorteado)
     print('dica:',dica[0])
     
@@ -126,7 +128,7 @@ def logica_jogo():
                 lista_ponto.append(pontos)
                 lista.remove(sorteado)
                 sorteado = objeto.sorteia()
-                dica = objeto.dicas(país=sorteado)
+                dica = objeto.dica_países(país=sorteado)
                 pontos = 5
                 chances = 5
                 print(lista)

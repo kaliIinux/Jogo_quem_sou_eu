@@ -11,7 +11,7 @@ class Animais:
     def __init__(self) -> None:
         self.animais = ['Vaca', 'Cavalo', 'Ovelha', 'Galinha', 'Porco']
         
-    def sorteia(self):
+    def sorteia_animal(self):
         sorteado = random.choice(self.animais)
         return sorteado
     
@@ -20,7 +20,7 @@ class Animais:
         nova_lista = self.animais.remove(sorteado)
         return nova_lista
     
-    def dicas(self, animal: str):
+    def dica_animais(self, animal: str):
         sorteada = animal
         
         if sorteada == 'Vaca':
@@ -40,6 +40,5 @@ class Animais:
             return galinha
         
         else:
-            porco = ['Começa com a letra C\n','É um animal mamífero\n', 'Tem uma coloração rosada\n',  'Possui patas curtas\n', 'Tem um rabinho enrolado']
+            porco = ['Começa com a letra P\n','É um animal mamífero\n', 'Tem uma coloração rosada\n',  'Possui patas curtas\n', 'Tem um rabinho enrolado']
             return porco
-        

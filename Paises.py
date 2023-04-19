@@ -20,8 +20,7 @@ class Paises():
         nova_lista = self.paises.remove(sorteado)
         return nova_lista
     
-    @staticmethod
-    def dicas(país: str):
+    def dica_países(self, país: str):
         sorteada = país
         
         if sorteada == 'Brasil':
@@ -43,6 +42,4 @@ class Paises():
         else:
             colombia = ['É um país que começa com a letra C', 'Este país é responsável por 50%\nda produção mundial de esmeraldas', 'A capital do país é Bogotá\n', 'A língua mãe é o Espanhol', 'Atualmente, o presidente do país é Gustavo Petro']
             return colombia
-
-        
-        
+    
