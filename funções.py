@@ -9,6 +9,7 @@ def documentacao():
     Exibe toda a documentação da aplicação
     """
     
+    print("\x1b[2J\x1b[1;1H", end="")
     print("""COMO JOGAR:\n
 O jogo possui alguns temas e dificuldades para cada um desses temas,
 os temas são:
@@ -216,5 +217,4 @@ def jogo(tema: str, dificuldade: str):
                 print('dica:',dica[0])
     except:
         print("\x1b[2J\x1b[1;1H", end="")
-        print(f'Obrigado por jogar!\n')
         return sum(lista_ponto)
