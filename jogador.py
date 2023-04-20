@@ -1,8 +1,8 @@
 class Jogador:
     
-    def __init__(self, nome: str) -> None:
+    def __init__(self, nome: str, pontos: int) -> None:
         self.__nome = nome
-        self.__pontos = 0
+        self.__pontos = pontos
         
     @property
     def nome(self):
@@ -19,4 +19,20 @@ class Jogador:
     @pontos.setter
     def pontos(self, value):
         self.__pontos = value
+        
+    @classmethod
+    def criar_jogador(cls, nome):
+        return cls(nome, 0)
+
+#nomes = ['angelo', 'kadu']
+#pessoas = []
+
+#p = Jogador.criar_jogador(nomes)
+#pessoas.append(vars(p))
+
+    
+#print('\n\n', pessoas)
+#print(pessoas[0]['_Jogador__nome'])  
+#print(pessoas[0]['_Jogador__pontos'])    
+    
         

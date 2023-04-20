@@ -20,11 +20,6 @@ class PaisesFácil():
         sorteado = random.choice(self.__facil)
         return sorteado
     
-    def remover(self):
-        sorteado = self.sorteia_facil()
-        nova_lista = self.__facil.remove(sorteado)
-        return nova_lista
-    
     def dica_países_facil(self, país: str):
         sorteada = país
         

@@ -59,11 +59,6 @@ class AnimaisDificil:
         sorteado = random.choice(self.__dificil)
         return sorteado
     
-    def remover(self):
-        sorteado = self.sorteia_animal_facil()
-        nova_lista = self.__dificil.remove(sorteado)
-        return nova_lista
-    
     def dica_animais_dificil(self, animal: str):
         sorteada = animal
         

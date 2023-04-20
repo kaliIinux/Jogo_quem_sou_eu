@@ -120,9 +120,7 @@ def mensagem():
     print('='*41)
     print()
     
-    
 def jogo(tema: str, dificuldade: str):
-    
     chances = 5
     pontos = 5
     lista_ponto = []
