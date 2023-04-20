@@ -1,6 +1,6 @@
 import random
 
-class Animais:
+class AnimaisFacil:
     
     """
     Classe do tema "Animais", possui a 
@@ -8,19 +8,23 @@ class Animais:
     para manipular essa lista
     """
     
-    def __init__(self) -> None:
-        self.animais = ['Vaca', 'Cavalo', 'Ovelha', 'Galinha', 'Porco']
+    def __init__(self):
+        self.__facil = ['Vaca', 'Cavalo', 'Ovelha', 'Galinha', 'Porco']
         
-    def sorteia_animal(self):
-        sorteado = random.choice(self.animais)
+    @property
+    def animal_facil(self):
+        return self.__facil    
+       
+    def sorteia_animal_facil(self):
+        sorteado = random.choice(self.__facil)
         return sorteado
     
     def remover(self):
-        sorteado = self.sorteia()
-        nova_lista = self.animais.remove(sorteado)
+        sorteado = self.__facil
+        nova_lista = self.__facil.remove(sorteado)
         return nova_lista
     
-    def dica_animais(self, animal: str):
+    def dica_animais_facil(self, animal: str):
         sorteada = animal
         
         if sorteada == 'Vaca':
@@ -42,3 +46,44 @@ class Animais:
         else:
             porco = ['Começa com a letra P\n','É um animal mamífero\n', 'Tem uma coloração rosada\n',  'Possui patas curtas\n', 'Tem um rabinho enrolado']
             return porco
+        
+class AnimaisDificil:
+    def __init__(self) :
+        self.__dificil = ['Baleia', 'Cobra', 'Rinoceronte', 'Gato', 'Girafa']
+        
+    @property
+    def animal_dificil(self):
+        return self.__dificil    
+       
+    def sorteia_animal_dificil(self):
+        sorteado = random.choice(self.__dificil)
+        return sorteado
+    
+    def remover(self):
+        sorteado = self.sorteia_animal_facil()
+        nova_lista = self.__dificil.remove(sorteado)
+        return nova_lista
+    
+    def dica_animais_dificil(self, animal: str):
+        sorteada = animal
+        
+        if sorteada == 'Baleia':
+            baleia = ['Começa com a letra B\n','É um animal mamífero\n', 'Possui cerca de 10 metros\n',  'Pode chegar a 8 e 9 toneladas\n', 'É um animal aquático\n']
+            return baleia
+        
+        elif sorteada == 'Cobra':
+            cobra = ['Começa com a letra C\n','Seu corpo é coberto por escamas\n', 'É um animal de sangue frio\n', 'É um animal rastejante\n', 'Algumas espécies são venenosas\n']
+            return cobra
+        
+        elif sorteada == 'Rinoceronte':
+            rinoceronte = ['Começa com a letra R\n', 'É um animal mamífero\n', 'Em sua cabeça pode haver de um a dois cornos\n', 'Corpo largo e perna curta\n', 'Possui uma pele grossa\n']
+            return rinoceronte
+        
+        elif sorteada == 'Gato':
+            gato = ['Começa com a letra G\n', 'É um animal mamífero\n', 'Tem pelo\n', 'É um animal doméstico\n', 'Mia\n']
+            return gato
+        
+        else:
+            girafa = ['Começa com a letra G\n','É um animal mamífero\n', 'Tem um pescoço grande\n',  'Passa maior parte do tempo zumbindo\n', 'Maior animal terrestre do mundo\n']
+            return girafa
+        
