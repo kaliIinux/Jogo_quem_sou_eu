@@ -1,8 +1,20 @@
+import pandas as pd
+import os
+import openpyxl
+
 class Jogador:
     
-    def __init__(self, nome: str, pontos: int) -> None:
+    """
+    Classe do Jogador, onde tenho os atributos
+    de cada jogador, os getters e setters e os 
+    métodos para adicionar e manipular em um data 
+    frame com pandas
+    """
+    
+    def __init__(self, nome: str, idade:int) -> None:
         self.__nome = nome
-        self.__pontos = pontos
+        self.__pontos = 0
+        self.__idade = idade
         
     @property
     def nome(self):
@@ -19,20 +31,31 @@ class Jogador:
     @pontos.setter
     def pontos(self, value):
         self.__pontos = value
-        
-    @classmethod
-    def criar_jogador(cls, nome):
-        return cls(nome, 0)
-
-#nomes = ['angelo', 'kadu']
-#pessoas = []
-
-#p = Jogador.criar_jogador(nomes)
-#pessoas.append(vars(p))
-
     
-#print('\n\n', pessoas)
-#print(pessoas[0]['_Jogador__nome'])  
-#print(pessoas[0]['_Jogador__pontos'])    
+    @property
+    def idade(self):
+        return self.__idade
     
-        
+    @idade.setter
+    def idade(self, value):
+        self.__idade = value
+    
+    @staticmethod
+    def cria_planilha():
+        d = {"Nome": [''], "Idade": [''], "Pontos": ['']}
+        dados = pd.DataFrame(data=d)
+        dados.to_excel("dados.xlsx", index=False)
+    
+    @staticmethod
+    def limpa_planilha():
+        os.remove("dados.xlsx")
+
+    def adicionar_jogador(self, pontos):
+        jogador = pd.read_excel("dados.xlsx")
+        jogador.loc[len(jogador)] = [self.__nome, self.__idade, pontos]
+        jogador.to_excel("dados.xlsx", index=False)
+    
+    @staticmethod
+    def ler():
+        planilha = pd.read_excel("dados.xlsx")
+        print(planilha)

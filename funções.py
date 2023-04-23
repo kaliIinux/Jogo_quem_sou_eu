@@ -1,5 +1,5 @@
 import inquirer
-from Paises import PaisesFácil, PaisesDifícil
+from Paises import PaisesFacil, PaisesDificil
 from Animais import AnimaisFacil, AnimaisDificil
 import time
 
@@ -121,13 +121,13 @@ def mensagem():
     print('='*41)
     print()
     
-def jogo(tema: str, dificuldade: str):
+def jogo(tema: str, dificuldade: str, jogador: str):
     chances = 5
     pontos = 5
     lista_ponto = []
     
     if tema == 'Países' and dificuldade == 'Fácil': 
-        objeto = PaisesFácil()
+        objeto = PaisesFacil()
         sorteado = objeto.sorteia_facil()
         lista = objeto.pais_facil
         dica = objeto.dica_países_facil(país=sorteado)
@@ -135,7 +135,7 @@ def jogo(tema: str, dificuldade: str):
         print('dica:',dica[0])
     
     elif tema == 'Países' and dificuldade == 'Difícil':
-        objeto = PaisesDifícil()
+        objeto = PaisesDificil()
         sorteado = objeto.sorteia_dificil()
         lista = objeto.dificil
         dica = objeto.dica_países_dificil(país=sorteado)
@@ -160,7 +160,7 @@ def jogo(tema: str, dificuldade: str):
         
     try:
         while True:
-            
+            print(f"Jogador: {jogador}\n")
             tentativa = str(input("Digite sua tentativa: \n")).strip().title()
             
             print("\x1b[2J\x1b[1;1H", end="")
@@ -213,7 +213,6 @@ def jogo(tema: str, dificuldade: str):
                     sorteado = objeto.sorteia_animal_dificil()
                     dica = objeto.dica_animais_dificil(animal=sorteado)    
                 print(lista)
-                print(lista_ponto)
                 print('dica:',dica[0])
     except:
         print("\x1b[2J\x1b[1;1H", end="")
