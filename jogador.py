@@ -40,22 +40,26 @@ class Jogador:
     def idade(self, value):
         self.__idade = value
     
+    def adicionar_jogador(self, pontos):
+        jogador = pd.read_excel("dados.xlsx")
+        jogador.loc[len(jogador)] = [self.__nome, self.__idade, pontos]
+        jogador.to_excel("dados.xlsx", index=False)
+        
     @staticmethod
     def cria_planilha():
         d = {"Nome": [''], "Idade": [''], "Pontos": ['']}
         dados = pd.DataFrame(data=d)
         dados.to_excel("dados.xlsx", index=False)
-    
+        
+        
     @staticmethod
     def limpa_planilha():
         os.remove("dados.xlsx")
-
-    def adicionar_jogador(self, pontos):
-        jogador = pd.read_excel("dados.xlsx")
-        jogador.loc[len(jogador)] = [self.__nome, self.__idade, pontos]
-        jogador.to_excel("dados.xlsx", index=False)
     
     @staticmethod
-    def ler():
+    def ler_ranking():
         planilha = pd.read_excel("dados.xlsx")
-        print(planilha)
+        ranking = planilha.loc[:,['Nome','Pontos']]
+        ranking = ranking.sort_values(by=['Pontos'], ascending=False, na_position='last',ignore_index=True).head(5)
+        print(ranking)
+        

@@ -51,7 +51,23 @@ def menu():
     questions = [
     inquirer.List('option',
                 message="O que você quer fazer?",
-                choices=['JOGAR', 'VER DOCUMENTAÇÃO', 'SAIR'],
+                choices=['JOGAR', 'DOCUMENTAÇÃO', 'RANKING', 'SAIR'],
+            ),
+            ]
+    answers = inquirer.prompt(questions)
+    return answers['option']
+
+def menu_ranking():
+    
+    """
+    Menu ranking
+    """
+    
+    print("\x1b[2J\x1b[1;1H", end="")
+    questions = [
+    inquirer.List('option',
+                message="O que você quer fazer?",
+                choices=['VER RANKING', 'NOVO RANKING', 'VOLTAR'],
             ),
             ]
     answers = inquirer.prompt(questions)
