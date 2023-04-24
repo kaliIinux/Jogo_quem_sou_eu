@@ -182,7 +182,7 @@ def jogo(tema: str, dificuldade: str, jogador: str):
             print("\x1b[2J\x1b[1;1H", end="")
             if tentativa != sorteado:
                 chances -= 1
-                
+
                 if chances == 4:
                     print(f'Ops, você errou... \nchances: {chances}')
                     print('dica:',dica[1])
@@ -205,8 +205,31 @@ def jogo(tema: str, dificuldade: str, jogador: str):
                     
                 elif chances == 0:
                     print("Ops.. Acabaram suas chances!\nVocê não ganhou nenhum ponto")
-                    
-            else:
+                    pontos = 0
+                    time.sleep(2)
+                    lista_ponto.append(pontos)
+                    lista.remove(sorteado)
+                    pontos = 5
+                    chances = 5
+                    if tema == 'Países' and dificuldade == 'Fácil':
+                        sorteado = objeto.sorteia_facil()
+                        dica = objeto.dica_países_facil(país=sorteado)
+                        
+                    elif tema == 'Países' and dificuldade == 'Difícil':
+                        sorteado = objeto.sorteia_dificil()
+                        dica = objeto.dica_países_dificil(país=sorteado)
+                        
+                    elif tema == 'Animais' and dificuldade == 'Fácil':
+                        sorteado = objeto.sorteia_animal_facil()
+                        dica = objeto.dica_animais_facil(animal=sorteado)
+                        
+                    elif tema == 'Animais' and dificuldade == 'Difícil':
+                        sorteado = objeto.sorteia_animal_dificil()
+                        dica = objeto.dica_animais_dificil(animal=sorteado)    
+                    print(lista)
+                    print('dica:',dica[0])
+
+            elif tentativa == sorteado:
                 print(f"Parabéns, você acertou!\nPontos ganhos: {pontos}\n")
                 time.sleep(2)
                 lista_ponto.append(pontos)

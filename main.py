@@ -29,6 +29,7 @@ def main():
                         print('-'*20)
                         print(f'Obrigado por jogar!\n')
                         print(f'Jogador: {player.nome}\nPontuação: {pontos}\n')
+                        print('-'*20)
                         player.adicionar_jogador(pontos=pontos)
                         print("=====Ranking=====")
                         Jogador.ler_ranking()
@@ -41,6 +42,7 @@ def main():
                         print('-'*20)
                         print(f'Obrigado por jogar!\n')
                         print(f'Jogador: {player.nome}\nPontuação: {pontos}\n')
+                        print('-'*20)
                         player.adicionar_jogador(pontos=pontos)
                         print("=====Ranking=====")
                         Jogador.ler_ranking()
@@ -107,7 +109,7 @@ def main():
                         input('Pressione ENTER para continuar')
                         
                     else:
-                        player = Jogador(nome= input('Insira seu nome de usuário: '))
+                        player = Jogador(nome= input('Insira seu nome de usuário: '), idade=input("Idade: "))
                         mensagem()
                         pontos = jogo('Animais', 'Difícil', player.nome)
                         print('-'*20)

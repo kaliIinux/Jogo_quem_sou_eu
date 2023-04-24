@@ -1,6 +1,5 @@
 import pandas as pd
 import os
-import openpyxl
 
 class Jogador:
     
