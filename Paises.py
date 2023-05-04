@@ -16,7 +16,6 @@ class PaisesFacil(Dicas):
     def pais_facil(self):
         return self.__facil
         
-    
     def sorteia_facil(self):
         sorteado = random.choice(self.__facil)
         return sorteado

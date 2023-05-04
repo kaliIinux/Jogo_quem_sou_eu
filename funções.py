@@ -146,7 +146,7 @@ def jogo(tema: str, dificuldade: str, jogador: str):
         objeto = PaisesFacil()
         sorteado = objeto.sorteia_facil()
         lista = objeto.pais_facil
-        dica = objeto.dica_países_facil(país=sorteado)
+        dica = PaisesFacil.dica_países_facil(país=sorteado)
         print(sorteado)
         print('dica:',dica[0])
     
@@ -154,7 +154,7 @@ def jogo(tema: str, dificuldade: str, jogador: str):
         objeto = PaisesDificil()
         sorteado = objeto.sorteia_dificil()
         lista = objeto.dificil
-        dica = objeto.dica_países_dificil(país=sorteado)
+        dica = PaisesDificil.dica_países_dificil(país=sorteado)
         print(sorteado)
         print('dica:',dica[0])
         
@@ -162,7 +162,7 @@ def jogo(tema: str, dificuldade: str, jogador: str):
         objeto = AnimaisFacil()
         sorteado = objeto.sorteia_animal_facil()
         lista = objeto.animal_facil
-        dica = objeto.dica_animais_facil(animal=sorteado)
+        dica = AnimaisFacil.dica_animais_facil(animal=sorteado)
         print(sorteado)
         print('dica:',dica[0])
     
@@ -170,7 +170,7 @@ def jogo(tema: str, dificuldade: str, jogador: str):
         objeto = AnimaisDificil()
         sorteado = objeto.sorteia_animal_dificil()
         lista = objeto.animal_dificil
-        dica = objeto.dica_animais_dificil(animal=sorteado)
+        dica = AnimaisDificil.dica_animais_dificil(animal=sorteado)
         print(sorteado)
         print('dica:',dica[0])
         
@@ -213,19 +213,19 @@ def jogo(tema: str, dificuldade: str, jogador: str):
                     chances = 5
                     if tema == 'Países' and dificuldade == 'Fácil':
                         sorteado = objeto.sorteia_facil()
-                        dica = objeto.dica_países_facil(país=sorteado)
+                        dica = PaisesFacil.dica_países_facil(país=sorteado)
                         
                     elif tema == 'Países' and dificuldade == 'Difícil':
                         sorteado = objeto.sorteia_dificil()
-                        dica = objeto.dica_países_dificil(país=sorteado)
+                        dica = PaisesDificil.dica_países_dificil(país=sorteado)
                         
                     elif tema == 'Animais' and dificuldade == 'Fácil':
                         sorteado = objeto.sorteia_animal_facil()
-                        dica = objeto.dica_animais_facil(animal=sorteado)
+                        dica = AnimaisFacil.dica_animais_facil(animal=sorteado)
                         
                     elif tema == 'Animais' and dificuldade == 'Difícil':
                         sorteado = objeto.sorteia_animal_dificil()
-                        dica = objeto.dica_animais_dificil(animal=sorteado)    
+                        dica = AnimaisDificil.dica_animais_dificil(animal=sorteado)    
                     print(lista)
                     print('dica:',dica[0])
 
@@ -238,19 +238,19 @@ def jogo(tema: str, dificuldade: str, jogador: str):
                 chances = 5
                 if tema == 'Países' and dificuldade == 'Fácil':
                     sorteado = objeto.sorteia_facil()
-                    dica = objeto.dica_países_facil(país=sorteado)
+                    dica = PaisesFacil.dica_países_facil(país=sorteado)
                     
                 elif tema == 'Países' and dificuldade == 'Difícil':
                     sorteado = objeto.sorteia_dificil()
-                    dica = objeto.dica_países_dificil(país=sorteado)
+                    dica = PaisesDificil.dica_países_dificil(país=sorteado)
                     
                 elif tema == 'Animais' and dificuldade == 'Fácil':
                     sorteado = objeto.sorteia_animal_facil()
-                    dica = objeto.dica_animais_facil(animal=sorteado)
+                    dica = AnimaisFacil.dica_animais_facil(animal=sorteado)
                     
                 elif tema == 'Animais' and dificuldade == 'Difícil':
                     sorteado = objeto.sorteia_animal_dificil()
-                    dica = objeto.dica_animais_dificil(animal=sorteado)    
+                    dica = AnimaisDificil.dica_países_dificil(animal=sorteado)    
                 print(lista)
                 print('dica:',dica[0])
     except:
